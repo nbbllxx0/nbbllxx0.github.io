@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaoliang Yang — Mechanical Engineering, Santa Clara University</title>
+<meta name="description" content="Shaoliang Yang, Ph.D. candidate in Mechanical Engineering at Santa Clara University. Machine learning for mechanical design, topology optimization, generative design of architected materials, and language-model agents for engineering solvers.">
+<meta property="og:title" content="Shaoliang Yang">
+<meta property="og:description" content="Machine learning for mechanical design that stays accountable to mechanics.">
+<meta property="og:image" content="assets/one_to_many.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=25df1eb8">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top">Shaoliang Yang</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#news">News</a>
+      <a href="assets/Shaoliang_Yang_CV.pdf">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ Intro ============ -->
+<section class="hero wrap">
+  <div class="hero-text">
+    <p class="eyebrow">Ph.D. Candidate · Mechanical Engineering · Santa Clara University</p>
+    <h1>Shaoliang Yang</h1>
+    <p class="lede">I build machine learning for mechanical design that stays accountable to mechanics.</p>
+    <p>
+      I am a Ph.D. candidate advised by Prof.&nbsp;Jun&nbsp;Wang,
+      expecting to complete the degree in June&nbsp;2027. My work develops generative models that produce
+      engineering geometry an engineer can actually edit, solvers fast enough to explore a design space
+      rather than a single design, benchmarks that say when a learned method can be trusted, and
+      language-model agents that steer those solvers under deterministic checks.
+      The rule throughout: the model proposes, the mechanics decides.
+    </p>
+    <p>
+      Before Santa Clara I trained in automation and control (B.E., Kunming University of Science and
+      Technology; M.Eng., Yunnan University), where I worked on deep generative models for low-light imaging.
+    </p>
+    <ul class="links" aria-label="Profiles">
+      <li><a class="btn primary" href="assets/Shaoliang_Yang_CV.pdf">Curriculum vitae</a></li>
+      <li><a class="btn" href="https://scholar.google.com/citations?user=qpWyXgMAAAAJ">Google Scholar</a></li>
+      <li><a class="btn" href="https://github.com/nbbllxx0">GitHub</a></li>
+      <li><a class="btn" href="https://www.linkedin.com/in/shaoliang-yang-744065348">LinkedIn</a></li>
+      <li><a class="btn" href="mailto:syang11@scu.edu">syang11@scu.edu</a></li>
+    </ul>
+  </div>
+  <aside class="hero-card" aria-label="At a glance">
+    <h3 class="small">Research interests</h3>
+    <ul class="plain">
+      <li>Inverse design of architected materials</li>
+      <li>Generative models inside CAD representations</li>
+      <li>Scalable, verifiable topology optimization</li>
+      <li>Language-model agents around engineering solvers</li>
+    </ul>
+    <h3 class="small">Education</h3>
+    <ul class="edu">
+      <li><strong>Ph.D., Mechanical Engineering</strong><span>Santa Clara University · expected June&nbsp;2027</span></li>
+      <li><strong>M.Eng., Control Theory and Control Engineering</strong><span>Yunnan University · 2023</span></li>
+      <li><strong>B.E., Automation</strong><span>Kunming University of Science and Technology · 2018</span></li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ============ Research ============ -->
+<section id="research" class="band">
+  <div class="wrap">
+    <h2>Research</h2>
+    <p class="section-lede">
+      Machine learning now proposes mechanical geometry faster than engineers can evaluate it, so the hard
+      problem has moved from generating designs to deciding which ones deserve to be believed.
+      My research sits at that boundary, in four connected threads.
+    </p>
+
+    <article class="thread">
+      <div class="thread-text">
+        <p class="thread-num">01</p>
+        <h3>Inverse design of architected materials</h3>
+        <p>
+          Given target effective properties, which cellular geometries achieve them? The answer is rarely
+          unique, and that is useful: diversity lets a manufacturing constraint eliminate one candidate
+          without collapsing the design space. <strong>Style-IH-GAN</strong> generates diverse triply periodic
+          minimal surface unit cells for prescribed properties and emits spatially graded fields in one pass,
+          with fidelity checked by numerical homogenization over 750 samples.
+          <strong>CH-WGAN</strong> extends this to uncertainty-aware generation of three-dimensional aperiodic
+          structures through signed distance fields.
+        </p>
+        <p class="refs">
+          <em>Engineering with Computers</em> 42:148 (2026, open access) ·
+          <em>Journal of Mechanical Design</em> 148(12):121701 (2026)
+        </p>
+      </div>
+      <figure class="thread-fig">
+        <img src="assets/one_to_many.jpg" alt="Fifteen different generated unit cells, all produced for the same target properties" loading="lazy">
+        <figcaption>One target, fifteen answers: unit cells generated by Style-IH-GAN for the same requested properties.</figcaption>
+      </figure>
+    </article>
+
+    <article class="thread reverse">
+      <div class="thread-text">
+        <p class="thread-num">02</p>
+        <h3>Generative models inside CAD representations</h3>
+        <p>
+          A generated raster cannot be revised; a spline can. <strong>NURBS-OT</strong> and parametric
+          autoencoders generate curves and cellular surfaces directly as B-splines and NURBS with
+          interpretable controls, so an engineer can move a control point and see a sensible change, and the
+          geometry flows straight into isogeometric analysis and CAM.
+        </p>
+        <p class="refs">
+          <em>Journal of Mechanical Design</em> 147(3):031703 (2025) ·
+          <em>Computer-Aided Design</em> 189:103936 (2025) and 196:104064 (2026) ·
+          ASME IDETC/CIE 2024
+        </p>
+      </div>
+      <figure class="thread-fig diagram spline" aria-label="Illustration of an editable NURBS curve">
+        <svg viewBox="0 0 520 300" role="img" aria-labelledby="splTitle">
+          <title id="splTitle">Illustration: a curve stored as a spline with a control polygon. Moving one control point produces a local, predictable change.</title>
+          <polyline class="poly" points="40,230 120,70 220,160 300,60 400,200 480,110"/>
+          <path class="curve ghost" d="M40,230 C 96,118 150,120 178,160 C 206,200 238,196 262,150 C 286,104 330,52 360,86 C 390,120 440,150 480,110"/>
+          <polyline class="poly moved" points="220,210 300,60 400,200"/>
+          <path class="curve" d="M40,230 C 96,118 150,120 178,160 C 206,200 240,236 266,178 C 292,120 330,52 360,86 C 390,120 440,150 480,110"/>
+          <g class="cp"><circle cx="40" cy="230" r="5"/><circle cx="120" cy="70" r="5"/><circle cx="300" cy="60" r="5"/><circle cx="400" cy="200" r="5"/><circle cx="480" cy="110" r="5"/></g>
+          <circle class="cp-ghost" cx="220" cy="160" r="5"/>
+          <circle class="cp-hot" cx="220" cy="210" r="6.5"/>
+          <path class="nudge" d="M220 166 V200" marker-end="url(#arr2)"/>
+          <defs><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+          <text x="232" y="262" class="note">move one control point → a local, predictable change</text>
+        </svg>
+        <figcaption>Illustration (not a result): geometry kept as a spline with an editable control polygon, the representation NURBS-OT generates in.</figcaption>
+      </figure>
+    </article>
+
+    <article class="thread">
+      <div class="thread-text">
+        <p class="thread-num">03</p>
+        <h3>Scalable, verifiable topology optimization</h3>
+        <p>
+          Matrix-free 3D SIMP with fused Gather-GEMM-Scatter kernels and a matrix-free Galerkin multigrid
+          solver put large three-dimensional topology optimization on a single GPU, released as open source.
+          Speed is only useful if the answer can be trusted, so the same line of work adds a guarded
+          density-floor policy that returns a linear solve only after its true residual passes an acceptance
+          test. <strong>NeuralTO-Bench</strong> compares classical and neural mesh-free methods on equal terms.
+        </p>
+        <p class="refs">
+          arXiv:2604.18020 · arXiv:2604.26441 · arXiv:2607.26382 · ASME IDETC/CIE 2026 ·
+          solver code under BSD 3-Clause
+        </p>
+      </div>
+      <figure class="thread-fig">
+        <img src="assets/million_cantilever.jpg" alt="Optimized cantilever topology at one million elements, side profile and isometric view" width="1400" height="447" loading="lazy">
+        <figcaption>Cantilever topology at 200 × 100 × 50 = 1,000,000 elements, optimized with the fused matrix-free kernel on one GPU. Smoothed isosurface; left, side profile; right, isometric view.</figcaption>
+      </figure>
+    </article>
+
+    <article class="thread reverse">
+      <div class="thread-text">
+        <p class="thread-num">04</p>
+        <h3>Language-model agents around engineering solvers</h3>
+        <p>
+          Language models can now read a solver's state and act on it. I use them as a
+          <strong>control layer</strong>: the model sets continuation parameters from the live solver state,
+          configures a topology-optimization problem from a plain-English description, or proposes spatial
+          edits after each solve, and deterministic checks decide what is accepted.
+        </p>
+        <p>
+          Across three studies the model steers the solver competitively, but a well-designed deterministic
+          baseline stays close or ahead each time. That is why acceptance rests with explicit checks, not
+          with the model. The same split carries over to materials search: a language model parses the
+          request, and a deterministic search over a homogenised lattice catalogue either returns a cell a
+          second solver can rebuild or refuses, naming the minimal set of conflicting constraints.
+        </p>
+        <p class="refs">
+          <em>Advances in Engineering Software</em> 223:104304 (2026) · AutoSiMP, arXiv:2603.27000 ·
+          IterSIMP-σ, arXiv:2605.19110 · arXiv:2609.14741 · code under BSD 3-Clause and MIT
+        </p>
+      </div>
+      <figure class="thread-fig diagram" aria-label="Controller loop diagram">
+        <svg viewBox="0 0 520 300" role="img" aria-labelledby="loopTitle">
+          <title id="loopTitle">Closed loop: solver state goes to a language-model controller, which proposes parameters; a SIMP step runs; admissibility checks certify the result before it is accepted.</title>
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <g class="node"><rect x="20" y="30" width="200" height="74" rx="10"/><text x="120" y="62">Solver state</text><text x="120" y="84" class="sub">compliance · grayness · budget</text></g>
+          <g class="node accent"><rect x="300" y="30" width="200" height="74" rx="10"/><text x="300" y="62" dx="100">Language model</text><text x="400" y="84" class="sub">proposes p, β, filter, move limit</text></g>
+          <g class="node"><rect x="300" y="196" width="200" height="74" rx="10"/><text x="400" y="228">SIMP step</text><text x="400" y="250" class="sub">FEM solve · sensitivities · update</text></g>
+          <g class="node check"><rect x="20" y="196" width="200" height="74" rx="10"/><text x="120" y="228">Admissibility checks</text><text x="120" y="250" class="sub">solver certifies, not the model</text></g>
+          <path d="M220 67 H296" class="edge" marker-end="url(#arr)"/>
+          <path d="M400 104 V192" class="edge" marker-end="url(#arr)"/>
+          <path d="M300 233 H224" class="edge" marker-end="url(#arr)"/>
+          <path d="M120 196 V108" class="edge" marker-end="url(#arr)"/>
+          <text x="260" y="156" class="motto">The model proposes; the solver certifies.</text>
+        </svg>
+        <figcaption>Language model as a control layer around a SIMP solver. In the pipelines built on it, acceptance rests with the solver and explicit checks.</figcaption>
+      </figure>
+    </article>
+
+    <p class="aside">
+      One question, <em>what does a learned transformation destroy?</em>, also drives related work on
+      defect-evidence benchmarks for semiconductor inspection, risk certificates for industrial image
+      restoration, and calibrated remaining-useful-life prediction under operating-regime shift.
+    </p>
+  </div>
+</section>
+
+<!-- ============ Publications ============ -->
+<section id="publications" class="wrap">
+  <h2>Publications</h2>
+  <p class="section-lede">Each entry links the published paper, the arXiv version and the code where they exist. Open <em>Details</em> for a summary, key results and BibTeX. Full list on <a href="https://scholar.google.com/citations?user=qpWyXgMAAAAJ">Google Scholar</a>.</p>
+<!-- PUBS:START -->
+<h3 class="pubgroup">Journal articles <span class="count">10</span></h3>
+<div class="pub-list"><article class="pub has-fig" id="pub-styleihgan"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/styleihgan_arch.jpg" data-cap="Pipeline: Style-IH-GAN: Diverse Inverse Homogenization and Continuous Graded Synthesis of Cellular Metamaterials. © The Author(s) 2026, CC BY 4.0" aria-label="Enlarge pipeline figure"><img src="assets/pubs/styleihgan_arch.jpg" alt="Pipeline figure from: Style-IH-GAN: Diverse Inverse Homogenization and Continuous Graded Synthesis of Cellular Metamaterials" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/styleihgan.jpg" data-cap="Result: Style-IH-GAN: Diverse Inverse Homogenization and Continuous Graded Synthesis of Cellular Metamaterials. © The Author(s) 2026, CC BY 4.0" aria-label="Enlarge result figure"><img src="assets/pubs/styleihgan.jpg" alt="Result figure from: Style-IH-GAN: Diverse Inverse Homogenization and Continuous Graded Synthesis of Cellular Metamaterials" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © The Author(s) 2026, CC BY 4.0</p></div><div class="pub-text"><h4 class="pub-title">Style-IH-GAN: Diverse Inverse Homogenization and Continuous Graded Synthesis of Cellular Metamaterials</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue"><em>Engineering with Computers</em> 42:148, 2026 <span class="tag">open access</span></p><div class="pub-links"><a class="pill" href="https://doi.org/10.1007/s00366-026-02393-3">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Inverse design of cellular metamaterials is one-to-many: many geometries realize the same target properties, but conditional generators tend to collapse onto one. Style-IH-GAN uses a style-modulated, property-conditioned generator with mode-seeking and property-consistency losses to produce genuinely different TPMS unit cells for a fixed target, and emits spatially graded fields in a single batched pass with trilinear interpolation for continuous inter-cell geometry.</p><ul class="hl"><li>2.2× higher shape-parameter diversity and 19% lower surrogate Young’s-modulus error than a vanilla conditional GAN</li><li>Fidelity checked by numerical homogenization over 750 generated samples across 15 targets</li><li>A 300-cell graded field is generated in sub-millisecond time</li><li>Stated limitation: accuracy is strongest inside the training manifold; boundary and extrapolated-density targets need screening</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2026styleihgan,
+  title={Style-IH-GAN: diverse inverse homogenization and continuous graded synthesis of cellular metamaterials},
+  volume={42},
+  ISSN={1435-5663},
+  url={http://dx.doi.org/10.1007/s00366-026-02393-3},
+  DOI={10.1007/s00366-026-02393-3},
+  number={5},
+  journal={Engineering with Computers},
+  publisher={Springer Science and Business Media LLC},
+  author={Yang, Shaoliang and Wang, Jun},
+  year={2026}, month=Aug
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-chwgan"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/chwgan_arch.jpg" data-cap="Architecture: CH-WGAN: Uncertainty-Aware Generative Design of Three-Dimensional Aperiodic Architected Cellular Materials via Signed Distance Fields. © 2026 ASME" aria-label="Enlarge architecture figure"><img src="assets/pubs/chwgan_arch.jpg" alt="Architecture figure from: CH-WGAN: Uncertainty-Aware Generative Design of Three-Dimensional Aperiodic Architected Cellular Materials via Signed Distance Fields" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/chwgan.jpg" data-cap="Result: CH-WGAN: Uncertainty-Aware Generative Design of Three-Dimensional Aperiodic Architected Cellular Materials via Signed Distance Fields. © 2026 ASME" aria-label="Enlarge result figure"><img src="assets/pubs/chwgan.jpg" alt="Result figure from: CH-WGAN: Uncertainty-Aware Generative Design of Three-Dimensional Aperiodic Architected Cellular Materials via Signed Distance Fields" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2026 ASME</p></div><div class="pub-text"><h4 class="pub-title">CH-WGAN: Uncertainty-Aware Generative Design of Three-Dimensional Aperiodic Architected Cellular Materials via Signed Distance Fields</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue"><em>Journal of Mechanical Design</em> 148(12):121701, 2026</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1115/1.4071593">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Aperiodic architected cellular materials trade directional performance for isotropy and robustness, but introduce geometric uncertainty that complicates validation and manufacturing. CH-WGAN learns how aperiodic variants depart from a periodic parent: a parameter generator maps nominal controls, an aperiodicity code and noise into a convex mixture of analytic signed distance functions whose scale and periodicity distributions model the uncertainty explicitly.</p><ul class="hl"><li>Conditional hierarchical Wasserstein GAN with an InfoGAN-style Q-head for invertibility and multimodal coverage</li><li>A periodicalization module warps the 3D grid according to learned periodicity distributions</li><li>Generates multiple structurally diverse aperiodic variants for one periodic parent; learned uncertainty matches real aperiodicity statistics</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2026chwgan,
+  title={CH-WGAN: Uncertainty-Aware Generative Design of Three-Dimensional Aperiodic Architected Cellular Materials Via Signed Distance Fields},
+  volume={148},
+  ISSN={1528-9001},
+  url={http://dx.doi.org/10.1115/1.4071593},
+  DOI={10.1115/1.4071593},
+  number={12},
+  journal={Journal of Mechanical Design},
+  publisher={ASME International},
+  author={Yang, Shaoliang and Wang, Jun},
+  year={2026}, month=May
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-llmctrl"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/llmctrl_arch.jpg" data-cap="Pipeline: Large Language Models as Optimization Controllers: Adaptive Continuation for SIMP Topology Optimization. © 2026 Elsevier Ltd." aria-label="Enlarge pipeline figure"><img src="assets/pubs/llmctrl_arch.jpg" alt="Pipeline figure from: Large Language Models as Optimization Controllers: Adaptive Continuation for SIMP Topology Optimization" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/llmctrl.jpg" data-cap="Result: Large Language Models as Optimization Controllers: Adaptive Continuation for SIMP Topology Optimization. © 2026 Elsevier Ltd." aria-label="Enlarge result figure"><img src="assets/pubs/llmctrl.jpg" alt="Result figure from: Large Language Models as Optimization Controllers: Adaptive Continuation for SIMP Topology Optimization" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2026 Elsevier Ltd.</p></div><div class="pub-text"><h4 class="pub-title">Large Language Models as Optimization Controllers: Adaptive Continuation for SIMP Topology Optimization</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue"><em>Advances in Engineering Software</em> 223:104304, 2026</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1016/j.advengsoft.2026.104304">Paper</a><a class="pill" href="https://arxiv.org/abs/2603.25099">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/Large-Language-Models-as-Optimization-Controllers"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A large language model acts as a state-conditioned control layer for SIMP topology optimization: every k-th iteration it reads a structured solver-state observation and sets the penalization exponent, projection sharpness, filter radius and move limit, instead of following a fixed open-loop continuation schedule. A hard grayness gate reduces premature sharpening.</p><ul class="hl"><li>In single-run 2-D comparisons, 5.9–7.4% lower final compliance than the no-tail fixed baseline, and better than the expert, three-field, schedule-only and grayness-rule controllers</li><li>A strong fixed-plus-tail control is slightly better (0.4–1.1%), so the paper frames the contribution as a control layer that can execute and help discover competitive strategies, not superior numerical performance</li><li>Ablation, gate, budget, replay and model-sensitivity checks for attribution and reproducibility</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2026llmcontrollers,
+  title={Large language models as optimization controllers: Adaptive continuation for SIMP topology optimization},
+  volume={223},
+  ISSN={0965-9978},
+  url={http://dx.doi.org/10.1016/j.advengsoft.2026.104304},
+  DOI={10.1016/j.advengsoft.2026.104304},
+  journal={Advances in Engineering Software},
+  publisher={Elsevier BV},
+  author={Yang, Shaoliang and Wang, Jun and Wang, Yunsheng},
+  year={2026}, month=Dec,
+  pages={104304}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-neuralbasis"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/neuralbasis_arch.jpg" data-cap="Architecture: Interpretable neural basis approximation for periodic cellular surfaces through analytic primitive mixtures. © 2026 The Authors, published by Elsevier Ltd., CC BY-NC 4.0" aria-label="Enlarge architecture figure"><img src="assets/pubs/neuralbasis_arch.jpg" alt="Architecture figure from: Interpretable neural basis approximation for periodic cellular surfaces through analytic primitive mixtures" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/neuralbasis.jpg" data-cap="Result: Interpretable neural basis approximation for periodic cellular surfaces through analytic primitive mixtures. © 2026 The Authors, published by Elsevier Ltd., CC BY-NC 4.0" aria-label="Enlarge result figure"><img src="assets/pubs/neuralbasis.jpg" alt="Result figure from: Interpretable neural basis approximation for periodic cellular surfaces through analytic primitive mixtures" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2026 The Authors, published by Elsevier Ltd., CC BY-NC 4.0</p></div><div class="pub-text"><h4 class="pub-title">Interpretable neural basis approximation for periodic cellular surfaces through analytic primitive mixtures</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue"><em>Computer-Aided Design</em> 196:104064, 2026 <span class="tag">open access</span></p><div class="pub-links"><a class="pill" href="https://doi.org/10.1016/j.cad.2026.104064">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Just as a Fourier transform decomposes a signal into sine waves, this work decomposes complex periodic cellular surfaces into weighted mixtures of analytic primitives. A 3D convolutional encoder maps a signed-distance volume to physically interpretable parameters: fill fractions, periodicity exponents and soft mixture weights over a library of candidate functions.</p><ul class="hl"><li>About 636× faster than direct parameter optimization, enabling real-time design exploration</li><li>High-fidelity reconstruction on four datasets of synthetic cellular surfaces and TPMS</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2026neuralbasis,
+  title={Interpretable neural basis approximation for periodic cellular surfaces through analytic primitive mixtures},
+  volume={196},
+  ISSN={0010-4485},
+  url={http://dx.doi.org/10.1016/j.cad.2026.104064},
+  DOI={10.1016/j.cad.2026.104064},
+  journal={Computer-Aided Design},
+  publisher={Elsevier BV},
+  author={Yang, Shaoliang and Wang, Jun},
+  year={2026}, month=July,
+  pages={104064}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-tpae"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/tpae_arch.jpg" data-cap="Architecture: Triple-parametric autoencoder for 2D reparameterization via Bézier, B-spline, and NURBS representations. © 2025 The Authors, published by Elsevier Ltd., CC BY-NC 4.0" aria-label="Enlarge architecture figure"><img src="assets/pubs/tpae_arch.jpg" alt="Architecture figure from: Triple-parametric autoencoder for 2D reparameterization via Bézier, B-spline, and NURBS representations" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/tpae.jpg" data-cap="Result: Triple-parametric autoencoder for 2D reparameterization via Bézier, B-spline, and NURBS representations. © 2025 The Authors, published by Elsevier Ltd., CC BY-NC 4.0" aria-label="Enlarge result figure"><img src="assets/pubs/tpae.jpg" alt="Result figure from: Triple-parametric autoencoder for 2D reparameterization via Bézier, B-spline, and NURBS representations" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2025 The Authors, published by Elsevier Ltd., CC BY-NC 4.0</p></div><div class="pub-text"><h4 class="pub-title">Triple-parametric autoencoder for 2D reparameterization via Bézier, B-spline, and NURBS representations</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue"><em>Computer-Aided Design</em> 189:103936, 2025 <span class="tag">open access</span></p><div class="pub-links"><a class="pill" href="https://doi.org/10.1016/j.cad.2025.103936">Paper</a><a class="pill code" href="https://github.com/nbbllxx0/TPDLF"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>One encoder compresses a 2D curve into a latent space; three decoders infer its Bézier, B-spline and NURBS parameters, and basis-function layers reconstruct smooth closed curves such as airfoils and Superformula shapes. The inferred control points and weights are interpretable and can be edited directly.</p><ul class="hl"><li>Three classical parameterizations unified in one network, without adversarial training</li><li>An interactive GUI lets a designer adjust inferred control points and weights in real time</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2025tpdlf,
+  title={Triple-parametric autoencoder for 2D reparameterization via Bézier, B-spline, and NURBS representations},
+  volume={189},
+  ISSN={0010-4485},
+  url={http://dx.doi.org/10.1016/j.cad.2025.103936},
+  DOI={10.1016/j.cad.2025.103936},
+  journal={Computer-Aided Design},
+  publisher={Elsevier BV},
+  author={Yang, Shaoliang and Wang, Jun},
+  year={2025}, month=Dec,
+  pages={103936}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-nurbsot"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/nurbsot_arch.jpg" data-cap="Architecture: NURBS-OT: An Advanced Model for Generative Curve Modeling. © 2024 ASME" aria-label="Enlarge architecture figure"><img src="assets/pubs/nurbsot_arch.jpg" alt="Architecture figure from: NURBS-OT: An Advanced Model for Generative Curve Modeling" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/nurbsot.jpg" data-cap="Result: NURBS-OT: An Advanced Model for Generative Curve Modeling. © 2024 ASME" aria-label="Enlarge result figure"><img src="assets/pubs/nurbsot.jpg" alt="Result figure from: NURBS-OT: An Advanced Model for Generative Curve Modeling" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2024 ASME</p></div><div class="pub-text"><h4 class="pub-title">NURBS-OT: An Advanced Model for Generative Curve Modeling</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, K. Wang</p><p class="pub-venue"><em>Journal of Mechanical Design</em> 147(3):031703, 2025</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1115/1.4066549">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>NURBS-OT combines optimal transport with NURBS to generate free-form curves, such as aerodynamic and hydrodynamic profiles, directly in a CAD-native parametric form rather than through a large GAN.</p><ul class="hl"><li>0.37M parameters versus 5.05M for BézierGAN</li><li>Evaluated on the UIUC airfoil and Superformula datasets</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2025nurbsot,
+  title={NURBS-OT: An Advanced Model for Generative Curve Modeling},
+  volume={147},
+  ISSN={1528-9001},
+  url={http://dx.doi.org/10.1115/1.4066549},
+  DOI={10.1115/1.4066549},
+  number={3},
+  journal={Journal of Mechanical Design},
+  publisher={ASME International},
+  author={Yang, Shaoliang and Wang, Jun and Wang, Kang},
+  year={2024}, month=Oct
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-lowlight002"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/lowlight002_arch.jpg" data-cap="Architecture: Efficient low-light image enhancement with model parameters scaled down to 0.02M. © The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2023" aria-label="Enlarge architecture figure"><img src="assets/pubs/lowlight002_arch.jpg" alt="Architecture figure from: Efficient low-light image enhancement with model parameters scaled down to 0.02M" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/lowlight002.jpg" data-cap="Result: Efficient low-light image enhancement with model parameters scaled down to 0.02M. © The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2023" aria-label="Enlarge result figure"><img src="assets/pubs/lowlight002.jpg" alt="Result figure from: Efficient low-light image enhancement with model parameters scaled down to 0.02M" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © The Author(s), under exclusive licence to Springer-Verlag GmbH Germany, part of Springer Nature 2023</p></div><div class="pub-text"><h4 class="pub-title">Efficient low-light image enhancement with model parameters scaled down to 0.02M</h4><p class="pub-authors"><span class="me">S. Yang</span>, D. Zhou</p><p class="pub-venue"><em>International Journal of Machine Learning and Cybernetics</em> 15(4):1575–1589, 2024</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1007/s13042-023-01983-7">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A lightweight low-light enhancement network (ULENet) with about 0.02M parameters, from M.Eng. thesis work at Yunnan University.</p><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2024ulenet,
+  title={Efficient low-light image enhancement with model parameters scaled down to 0.02M},
+  volume={15},
+  ISSN={1868-808X},
+  url={http://dx.doi.org/10.1007/s13042-023-01983-7},
+  DOI={10.1007/s13042-023-01983-7},
+  number={4},
+  journal={International Journal of Machine Learning and Cybernetics},
+  publisher={Springer Science and Business Media LLC},
+  author={Yang, Shaoliang and Zhou, Dongming},
+  year={2023}, month=Nov,
+  pages={1575–1589}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-lightingnet"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/lightingnet_arch.jpg" data-cap="Architecture: LightingNet: An Integrated Learning Method for Low-Light Image Enhancement. © 2023 IEEE" aria-label="Enlarge architecture figure"><img src="assets/pubs/lightingnet_arch.jpg" alt="Architecture figure from: LightingNet: An Integrated Learning Method for Low-Light Image Enhancement" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/lightingnet.jpg" data-cap="Result: LightingNet: An Integrated Learning Method for Low-Light Image Enhancement. © 2023 IEEE" aria-label="Enlarge result figure"><img src="assets/pubs/lightingnet.jpg" alt="Result figure from: LightingNet: An Integrated Learning Method for Low-Light Image Enhancement" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2023 IEEE</p></div><div class="pub-text"><h4 class="pub-title">LightingNet: An Integrated Learning Method for Low-Light Image Enhancement</h4><p class="pub-authors"><span class="me">S. Yang</span>, D. Zhou, J. Cao, Y. Guo</p><p class="pub-venue"><em>IEEE Transactions on Computational Imaging</em> 9:29–42, 2023</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1109/TCI.2023.3240087">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>LightingNet addresses noise, chromatic aberration and detail distortion in low-light images by combining a vision-transformer enhancement sub-network, which supplies local high-level features, with a complementary learning sub-network that supplies global fine-tuned features through transfer learning.</p><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2023lightingnet,
+  title={LightingNet: An Integrated Learning Method for Low-Light Image Enhancement},
+  volume={9},
+  ISSN={2573-0436},
+  url={http://dx.doi.org/10.1109/tci.2023.3240087},
+  DOI={10.1109/tci.2023.3240087},
+  journal={IEEE Transactions on Computational Imaging},
+  publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+  author={Yang, Shaoliang and Zhou, Dongming and Cao, Jinde and Guo, Yanbu},
+  year={2023},
+  pages={29–42}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-dualpath"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/dualpath_arch.jpg" data-cap="Architecture: Single Image Low-Light Enhancement via a Dual-Path Generative Adversarial Network. © The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2023" aria-label="Enlarge architecture figure"><img src="assets/pubs/dualpath_arch.jpg" alt="Architecture figure from: Single Image Low-Light Enhancement via a Dual-Path Generative Adversarial Network" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/dualpath.jpg" data-cap="Result: Single Image Low-Light Enhancement via a Dual-Path Generative Adversarial Network. © The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2023" aria-label="Enlarge result figure"><img src="assets/pubs/dualpath.jpg" alt="Result figure from: Single Image Low-Light Enhancement via a Dual-Path Generative Adversarial Network" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2023</p></div><div class="pub-text"><h4 class="pub-title">Single Image Low-Light Enhancement via a Dual-Path Generative Adversarial Network</h4><p class="pub-authors"><span class="me">S. Yang</span>, D. Zhou</p><p class="pub-venue"><em>Circuits, Systems, and Signal Processing</em> 42(7):4221–4237, 2023</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1007/s00034-023-02311-8">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A dual-path generative adversarial network (DPGAN) for single-image low-light enhancement.</p><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2023dpgan,
+  title={Single Image Low-Light Enhancement via a Dual-Path Generative Adversarial Network},
+  volume={42},
+  ISSN={1531-5878},
+  url={http://dx.doi.org/10.1007/s00034-023-02311-8},
+  DOI={10.1007/s00034-023-02311-8},
+  number={7},
+  journal={Circuits, Systems, and Signal Processing},
+  publisher={Springer Science and Business Media LLC},
+  author={Yang, Shaoliang and Zhou, Dongming},
+  year={2023}, month=Feb,
+  pages={4221–4237}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-transgan"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/transgan_arch.jpg" data-cap="Architecture: Rethinking Low-Light Enhancement via Transformer-GAN. © 2022 IEEE" aria-label="Enlarge architecture figure"><img src="assets/pubs/transgan_arch.jpg" alt="Architecture figure from: Rethinking Low-Light Enhancement via Transformer-GAN" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/transgan.jpg" data-cap="Result: Rethinking Low-Light Enhancement via Transformer-GAN. © 2022 IEEE" aria-label="Enlarge result figure"><img src="assets/pubs/transgan.jpg" alt="Result figure from: Rethinking Low-Light Enhancement via Transformer-GAN" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2022 IEEE</p></div><div class="pub-text"><h4 class="pub-title">Rethinking Low-Light Enhancement via Transformer-GAN</h4><p class="pub-authors"><span class="me">S. Yang</span>, D. Zhou, J. Cao, Y. Guo</p><p class="pub-venue"><em>IEEE Signal Processing Letters</em> 29:1082–1086, 2022</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1109/LSP.2022.3167331">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A vision-transformer-based GAN for low-light enhancement that controls noise during enhancement: an iterative multi-branch feature-extraction subnet followed by an image-reconstruction subnet, built on multi-head multi-covariance self-attention and a light feature-forward module.</p><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@article{yang2022transformergan,
+  title={Rethinking Low-Light Enhancement via Transformer-GAN},
+  volume={29},
+  ISSN={1558-2361},
+  url={http://dx.doi.org/10.1109/lsp.2022.3167331},
+  DOI={10.1109/lsp.2022.3167331},
+  journal={IEEE Signal Processing Letters},
+  publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+  author={Yang, Shaoliang and Zhou, Dongming and Cao, Jinde and Guo, Yanbu},
+  year={2022},
+  pages={1082–1086}
+}</pre></div></div></details></div></div></article></div>
+<h3 class="pubgroup">Conference papers <span class="count">4</span></h3>
+<div class="pub-list"><article class="pub has-fig" id="pub-neuraltobench"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/neuraltobench_arch.jpg" data-cap="Architecture: NeuralTO-Bench: A Reproducibility Framework and Benchmark Foundation for Classical and Neural Mesh-Free Topology Optimization. © 2026 ASME" aria-label="Enlarge architecture figure"><img src="assets/pubs/neuraltobench_arch.jpg" alt="Architecture figure from: NeuralTO-Bench: A Reproducibility Framework and Benchmark Foundation for Classical and Neural Mesh-Free Topology Optimization" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/neuraltobench.jpg" data-cap="Result: NeuralTO-Bench: A Reproducibility Framework and Benchmark Foundation for Classical and Neural Mesh-Free Topology Optimization. © 2026 ASME" aria-label="Enlarge result figure"><img src="assets/pubs/neuraltobench.jpg" alt="Result figure from: NeuralTO-Bench: A Reproducibility Framework and Benchmark Foundation for Classical and Neural Mesh-Free Topology Optimization" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2026 ASME</p></div><div class="pub-text"><h4 class="pub-title">NeuralTO-Bench: A Reproducibility Framework and Benchmark Foundation for Classical and Neural Mesh-Free Topology Optimization</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue"><em>ASME IDETC/CIE</em> IDETC2026-194238, 2026 <span class="tag">accepted</span></p><div class="pub-links"><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Places classical SIMP, DMF-TONN and an improved physics-informed variant, StablePINN, on identical 2D and 3D cantilever problems with matched materials, boundary conditions, loads and volume targets. StablePINN differs from DMF-TONN in one change: collocation points are sampled from a pre-allocated, GPU-resident boundary point pool.</p><ul class="hl"><li>StablePINN reaches 10%–59% lower structural compliance than DMF-TONN across the 2D and 3D problems.</li><li>Classical SIMP keeps exact volume-constraint satisfaction and a faster 2D wall-clock time.</li><li>Direct SIMP-vs-neural compliance comparison needs matched energy-scaling conventions, which the paper leaves open.</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@inproceedings{yang2026neuraltobench,
+  title={NeuralTO-Bench: A Reproducibility Framework and Benchmark Foundation for Classical and Neural Mesh-Free Topology Optimization},
+  author={S. Yang and J. Wang and Y. Wang},
+  booktitle={ASME IDETC/CIE},
+  year={2026},
+  note={Accepted}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-semanticinverse"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/semanticinverse_arch.jpg" data-cap="Pipeline: Semantic Inverse Design of Cellular Structures in Implicit Field Space. © 2026 ASME" aria-label="Enlarge pipeline figure"><img src="assets/pubs/semanticinverse_arch.jpg" alt="Pipeline figure from: Semantic Inverse Design of Cellular Structures in Implicit Field Space" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/semanticinverse.jpg" data-cap="Sample: Semantic Inverse Design of Cellular Structures in Implicit Field Space. © 2026 ASME" aria-label="Enlarge sample figure"><img src="assets/pubs/semanticinverse.jpg" alt="Sample figure from: Semantic Inverse Design of Cellular Structures in Implicit Field Space" loading="lazy"></button><figcaption>Sample</figcaption></figure><p class="fig-credit">Figures from this article. © 2026 ASME</p></div><div class="pub-text"><h4 class="pub-title">Semantic Inverse Design of Cellular Structures in Implicit Field Space</h4><p class="pub-authors">Y. Wang, Z. Yashengjiang, B. Yu, <span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue"><em>ASME IDETC/CIE</em> IDETC2026-194262, 2026 <span class="tag">accepted</span></p><div class="pub-links"><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Maps qualitative engineering descriptors (e.g. &quot;low stiffness, medium density&quot;) to quantitative property targets, then retrieves candidate unit cells from a library of implicit-function geometries and ranks them with a surrogate trained on voxel-FEM homogenization labels, instead of generating geometry directly.</p><ul class="hl"><li>Joint Success@5 of 92.5% across the evaluation prompt suite (stiffness within tolerance and all hard constraints met).</li><li>Stiffness mean relative error of 3.4% for the top-ranked result.</li><li>Retrieved candidates stay consistent with Gibson–Ashby scaling over the explored density range.</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@inproceedings{wang2026semantic,
+  title={Semantic Inverse Design of Cellular Structures in Implicit Field Space},
+  author={Y. Wang and Z. Yashengjiang and B. Yu and S. Yang and J. Wang},
+  booktitle={ASME IDETC/CIE},
+  year={2026},
+  note={Accepted}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-invinf"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/invinf_arch.jpg" data-cap="Architecture: Inverse Inference of Aperiodic Structures: Decoding Signed Distance Fields into Learnable Parameters for 3D Reconstruction. © 2026 ASME" aria-label="Enlarge architecture figure"><img src="assets/pubs/invinf_arch.jpg" alt="Architecture figure from: Inverse Inference of Aperiodic Structures: Decoding Signed Distance Fields into Learnable Parameters for 3D Reconstruction" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/invinf.jpg" data-cap="Result: Inverse Inference of Aperiodic Structures: Decoding Signed Distance Fields into Learnable Parameters for 3D Reconstruction. © 2026 ASME" aria-label="Enlarge result figure"><img src="assets/pubs/invinf.jpg" alt="Result figure from: Inverse Inference of Aperiodic Structures: Decoding Signed Distance Fields into Learnable Parameters for 3D Reconstruction" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2026 ASME</p></div><div class="pub-text"><h4 class="pub-title">Inverse Inference of Aperiodic Structures: Decoding Signed Distance Fields into Learnable Parameters for 3D Reconstruction</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue"><em>ASME IDETC/CIE</em> DETC2025-168575, 2025</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1115/DETC2025-168575">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A learning-based framework that decodes the signed distance field of a complex 3D aperiodic structure into interpretable design parameters, notably a periodicity factor and a fill-fraction scale, with an automatic dataset-generation procedure that supervises those parameters directly.</p><ul class="hl"><li>Recovers the governing parameters and reconstructs the SDF from them</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@inproceedings{yang2025inverseinference,
+  series={IDETC-CIE2025},
+  title={Inverse Inference of Aperiodic Structures: Decoding Signed Distance Fields Into Learnable Parameters for 3D Reconstruction},
+  url={http://dx.doi.org/10.1115/detc2025-168575},
+  DOI={10.1115/detc2025-168575},
+  booktitle={Volume 2A: 45th Computers and Information in Engineering Conference (CIE)},
+  publisher={American Society of Mechanical Engineers},
+  author={Yang, Shaoliang and Wang, Jun},
+  year={2025}, month=Aug,
+  collection={IDETC-CIE2025}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-igasynth"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/igasynth_arch.jpg" data-cap="Pipeline: Enhancing Isogeometric Analysis with NURBS-Based Synthesis. © 2024 ASME" aria-label="Enlarge pipeline figure"><img src="assets/pubs/igasynth_arch.jpg" alt="Pipeline figure from: Enhancing Isogeometric Analysis with NURBS-Based Synthesis" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/igasynth.jpg" data-cap="Result: Enhancing Isogeometric Analysis with NURBS-Based Synthesis. © 2024 ASME" aria-label="Enlarge result figure"><img src="assets/pubs/igasynth.jpg" alt="Result figure from: Enhancing Isogeometric Analysis with NURBS-Based Synthesis" loading="lazy"></button><figcaption>Result</figcaption></figure><p class="fig-credit">Figures from this article. © 2024 ASME</p></div><div class="pub-text"><h4 class="pub-title">Enhancing Isogeometric Analysis with NURBS-Based Synthesis</h4><p class="pub-authors"><span class="me">S. Yang</span>, K. Wang, J. Wang</p><p class="pub-venue"><em>ASME IDETC/CIE</em> DETC2024-142195, 2024</p><div class="pub-links"><a class="pill" href="https://doi.org/10.1115/DETC2024-142195">Paper</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Connects machine-learning curve generation to isogeometric analysis: generated curves keep their NURBS parameterization, and a companion analytical framework constructs the coordinates and computes physical displacements, so generated geometry can be analysed directly on UIUC airfoil and Superformula shapes.</p><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@inproceedings{yang2024igasynthesis,
+  series={IDETC-CIE2024},
+  title={Enhancing Isogeometric Analysis With NURBS-Based Synthesis},
+  url={http://dx.doi.org/10.1115/detc2024-142195},
+  DOI={10.1115/detc2024-142195},
+  booktitle={Volume 2B: 44th Computers and Information in Engineering Conference (CIE)},
+  publisher={American Society of Mechanical Engineers},
+  author={Yang, Shaoliang and Wang, Kang and Wang, Jun},
+  year={2024}, month=Aug,
+  collection={IDETC-CIE2024}
+}</pre></div></div></details></div></div></article></div>
+<h3 class="pubgroup">Preprints <span class="count">9</span></h3>
+<div class="pub-list"><article class="pub has-fig" id="pub-floor"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/floor_arch.jpg" data-cap="Method: When a Positive SIMP Density Floor Is Not Enough: Solver Admissibility and Guarded Floor Selection in Matrix-Free 3D Topology Optimization" aria-label="Enlarge method figure"><img src="assets/pubs/floor_arch.jpg" alt="Method figure from: When a Positive SIMP Density Floor Is Not Enough: Solver Admissibility and Guarded Floor Selection in Matrix-Free 3D Topology Optimization" loading="lazy"></button><figcaption>Method</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/floor.jpg" data-cap="Result: When a Positive SIMP Density Floor Is Not Enough: Solver Admissibility and Guarded Floor Selection in Matrix-Free 3D Topology Optimization" aria-label="Enlarge result figure"><img src="assets/pubs/floor.jpg" alt="Result figure from: When a Positive SIMP Density Floor Is Not Enough: Solver Admissibility and Guarded Floor Selection in Matrix-Free 3D Topology Optimization" loading="lazy"></button><figcaption>Result</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">When a Positive SIMP Density Floor Is Not Enough: Solver Admissibility and Guarded Floor Selection in Matrix-Free 3D Topology Optimization</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue">arXiv:2607.26382, 2026 <span class="tag">under review</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2607.26382">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/solver-admissibility-and-guarded-floor-selection"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>In a matrix-free multigrid FGMRES solver for 3D SIMP, a reported converged solve is not always converged: the projected residual used for stopping can fall below tolerance while the true residual is far above it. The paper treats density-floor selection as a verified control problem and accepts no solution until the true relative residual is recomputed and meets 1e-6.</p><ul class="hl"><li>On 4 of 102 held-out states the stopping residual passes while the true residual is 1.35–49.5× the tolerance</li><li>A two-feature rule matches 98 of 102 reference classifications; the residual guard catches the other four, so all 102 selected solves meet the tolerance</li><li>Preserves the original operator on 24 admissible states, at 2.5× the mean wall time of always using a 1e-3 floor</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026densityfloor,
+  title={When a Positive SIMP Density Floor Is Not Enough: Solver Admissibility and Guarded Floor Selection in Matrix-Free 3D Topology Optimization},
+  author={S. Yang and J. Wang and Y. Wang},
+  year={2026},
+  eprint={2607.26382},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2607.26382}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-fusedggs"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/fusedggs_arch.jpg" data-cap="Method: Matrix-Free 3D SIMP Topology Optimization with Fused Gather-GEMM-Scatter Kernels" aria-label="Enlarge method figure"><img src="assets/pubs/fusedggs_arch.jpg" alt="Method figure from: Matrix-Free 3D SIMP Topology Optimization with Fused Gather-GEMM-Scatter Kernels" loading="lazy"></button><figcaption>Method</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/fusedggs.jpg" data-cap="Result: Matrix-Free 3D SIMP Topology Optimization with Fused Gather-GEMM-Scatter Kernels" aria-label="Enlarge result figure"><img src="assets/pubs/fusedggs.jpg" alt="Result figure from: Matrix-Free 3D SIMP Topology Optimization with Fused Gather-GEMM-Scatter Kernels" loading="lazy"></button><figcaption>Result</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">Matrix-Free 3D SIMP Topology Optimization with Fused Gather-GEMM-Scatter Kernels</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue">arXiv:2604.18020, 2026 <span class="tag">under revision</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2604.18020">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/Fused-Gather-GEMM-Scatter-Kernels"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A single fused CUDA kernel performs gather, per-element stiffness multiplication and scatter accumulation in one pass, removing the DRAM traffic between stages of the conventional three-stage matrix-free implementation.</p><ul class="hl"><li>4.6–7.3× end-to-end SIMP speedup on one RTX 4090 across 216k–4.9M cantilever elements; 4.4× on a 499,125-element torsion case</li><li>2.3–4.6× against the same-precision FP32 three-stage baseline</li><li>3.2–4.9× lower energy than matched FP64 runs in instrumented board-power traces</li><li>BF16 is shown to be ill-conditioned for this problem class rather than adopted</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026fusedggs,
+  title={Matrix-Free 3D SIMP Topology Optimization with Fused Gather-GEMM-Scatter Kernels},
+  author={S. Yang and J. Wang and Y. Wang},
+  year={2026},
+  eprint={2604.18020},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2604.18020}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-gmg"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/gmg_arch.jpg" data-cap="Method: A Matrix-Free Galerkin Multigrid Solver and Failure-Mode Screen for Single-GPU 3D SIMP Linear Systems" aria-label="Enlarge method figure"><img src="assets/pubs/gmg_arch.jpg" alt="Method figure from: A Matrix-Free Galerkin Multigrid Solver and Failure-Mode Screen for Single-GPU 3D SIMP Linear Systems" loading="lazy"></button><figcaption>Method</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/gmg.jpg" data-cap="Result: A Matrix-Free Galerkin Multigrid Solver and Failure-Mode Screen for Single-GPU 3D SIMP Linear Systems" aria-label="Enlarge result figure"><img src="assets/pubs/gmg.jpg" alt="Result figure from: A Matrix-Free Galerkin Multigrid Solver and Failure-Mode Screen for Single-GPU 3D SIMP Linear Systems" loading="lazy"></button><figcaption>Result</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">A Matrix-Free Galerkin Multigrid Solver and Failure-Mode Screen for Single-GPU 3D SIMP Linear Systems</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue">arXiv:2604.26441, 2026</p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2604.26441">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/Mixed-Precision-GMG-SIMP"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A matrix-free Galerkin geometric multigrid hierarchy built around a fused fine-level operator, studied as a linear-solver result rather than an end-to-end speed claim, with an explicit failure-mode screen for high-contrast 3D SIMP systems.</p><ul class="hl"><li>FP32-GMG: 1.62×, 1.75× and 3.12× wall-time ratios against a capped Jacobi-PCG baseline at 64k, 216k and 512k elements</li><li>A 1M-element uniform system solved in 1.50 ± 0.58 s</li><li>Reports its limits: heterogeneous pass rates fall to 1/9 at 512k, and BF16 is not faster than FP32</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026gmg,
+  title={A Matrix-Free Galerkin Multigrid Solver and Failure-Mode Screen for Single-GPU 3D SIMP Linear Systems},
+  author={S. Yang and J. Wang and Y. Wang},
+  year={2026},
+  eprint={2604.26441},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2604.26441}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-autosimp"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/autosimp_arch.jpg" data-cap="Pipeline: AutoSiMP: Autonomous Topology Optimization from Natural Language via LLM-Driven Problem Configuration and Adaptive Solver Control" aria-label="Enlarge pipeline figure"><img src="assets/pubs/autosimp_arch.jpg" alt="Pipeline figure from: AutoSiMP: Autonomous Topology Optimization from Natural Language via LLM-Driven Problem Configuration and Adaptive Solver Control" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/autosimp.jpg" data-cap="Result: AutoSiMP: Autonomous Topology Optimization from Natural Language via LLM-Driven Problem Configuration and Adaptive Solver Control" aria-label="Enlarge result figure"><img src="assets/pubs/autosimp.jpg" alt="Result figure from: AutoSiMP: Autonomous Topology Optimization from Natural Language via LLM-Driven Problem Configuration and Adaptive Solver Control" loading="lazy"></button><figcaption>Result</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">AutoSiMP: Autonomous Topology Optimization from Natural Language via LLM-Driven Problem Configuration and Adaptive Solver Control</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue">arXiv:2603.27000, 2026 <span class="tag">under review</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2603.27000">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/AutoSiMP"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A pipeline from a plain-English structural problem to a validated binary topology: an LLM configurator, a boundary-condition generator, a three-field SIMP solver, an eight-check structural evaluator and a closed-loop retry.</p><ul class="hl"><li>Valid specifications on all 10 test problems, with a median +0.3% compliance penalty against expert ground truth</li><li>Across 17 benchmarks the LLM controller reaches the lowest median compliance but a 76.5% pass rate; the deterministic schedule passes 100% at +1.5% compliance</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026autosimp,
+  title={AutoSiMP: Autonomous Topology Optimization from Natural Language via LLM-Driven Problem Configuration and Adaptive Solver Control},
+  author={S. Yang and J. Wang and Y. Wang},
+  year={2026},
+  eprint={2603.27000},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2603.27000}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-itersimp"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/itersimp_arch.jpg" data-cap="Pipeline: IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization" aria-label="Enlarge pipeline figure"><img src="assets/pubs/itersimp_arch.jpg" alt="Pipeline figure from: IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/itersimp.jpg" data-cap="Result: IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization" aria-label="Enlarge result figure"><img src="assets/pubs/itersimp.jpg" alt="Result figure from: IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization" loading="lazy"></button><figcaption>Result</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue">arXiv:2605.19110, 2026 <span class="tag">under revision</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2605.19110">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/IterSIMP-sigma-LLM-Public-release"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Tests whether multimodal LLMs can act as inspectable spatial proposal modules around a SIMP solver: after each solve, density and stress fields are rendered, the model proposes ranked interventions, and deterministic safeguards accept, reject or stop each one.</p><ul class="hl"><li>1.9% lower geometric-mean compliance on a 16-problem 2D benchmark, reported as not statistically significant (p = 0.382)</li><li>Deterministic hotspot seeding remains competitive; the paper supports an inspectable framework, not a claim that LLM visual reasoning improves the optimum</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026itersimp,
+  title={IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization},
+  author={S. Yang and J. Wang and Y. Wang},
+  year={2026},
+  eprint={2605.19110},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2605.19110}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-registry"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/registry_arch.jpg" data-cap="Pipeline: A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search" aria-label="Enlarge pipeline figure"><img src="assets/pubs/registry_arch.jpg" alt="Pipeline figure from: A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/registry.jpg" data-cap="Sample: A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search" aria-label="Enlarge sample figure"><img src="assets/pubs/registry.jpg" alt="Sample figure from: A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search" loading="lazy"></button><figcaption>Sample</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search</h4><p class="pub-authors"><span class="me">S. Yang</span>, H. Chu, Z. Yashengjiang, J. Wang</p><p class="pub-venue">arXiv:2609.14741, 2026</p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2609.14741">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/A-PROPERTY-REGISTRY-CONTRACT-FOR-RETRIEVE-OR-REFUSE-THERMAL-MECHANICAL-LATTICE-SEARCH"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>A language model parses an engineer&#x27;s thermal-mechanical request into a typed query; deterministic search over 1,397 homogenised unit cells and 19 base materials (26,543 combinations) then either returns a catalogue row that a second solver can rebuild, or refuses an unsatisfiable request with the minimal conflicting constraints and the slack of a repair, instead of returning the nearest neighbour. One registry declaration generates both the prompt and the evaluator, so undeclared parsed keys cannot reach search.</p><ul class="hl"><li>On a frozen suite of 64 typed queries, matches min-repair on every feasible query (48/48) and refuses every empty one (16/16) with minimal unsatisfiable subsets and slack.</li><li>Constraint-ignoring nearest-neighbour and penalty search violate stated cost or density limits.</li><li>Repairs printed at three significant figures and rounded outward stay feasible on 216/216 empty queries.</li><li>The 308-request parse benchmark is template text, not unconstrained engineer prose.</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026registry,
+  title={A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search},
+  author={S. Yang and H. Chu and Z. Yashengjiang and J. Wang},
+  year={2026},
+  eprint={2609.14741},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2609.14741}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-waferinspectsr"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/waferinspectsr_arch.jpg" data-cap="Pipeline: Does Super-Resolution Preserve Defect Evidence? A Low-False-Call Benchmark for Semiconductor Inspection" aria-label="Enlarge pipeline figure"><img src="assets/pubs/waferinspectsr_arch.jpg" alt="Pipeline figure from: Does Super-Resolution Preserve Defect Evidence? A Low-False-Call Benchmark for Semiconductor Inspection" loading="lazy"></button><figcaption>Pipeline</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/waferinspectsr.jpg" data-cap="Sample: Does Super-Resolution Preserve Defect Evidence? A Low-False-Call Benchmark for Semiconductor Inspection" aria-label="Enlarge sample figure"><img src="assets/pubs/waferinspectsr.jpg" alt="Sample figure from: Does Super-Resolution Preserve Defect Evidence? A Low-False-Call Benchmark for Semiconductor Inspection" loading="lazy"></button><figcaption>Sample</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">Does Super-Resolution Preserve Defect Evidence? A Low-False-Call Benchmark for Semiconductor Inspection</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue">arXiv:2607.17401, 2026 <span class="tag">under review</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2607.17401">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/WAFERINSPECTSR-BENCH"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Super-resolution can make inspection images look sharper without preserving the evidence needed to detect a defect. This benchmark separates reconstruction from detection and scores both at a predeclared low false-positive rate.</p><ul class="hl"><li>The two learned reconstruction models reach the highest structural similarity yet detect fewer defect pixels than bicubic interpolation in every paired repetition</li><li>Passing calibration does not guarantee transfer: a joint model passes clean calibration but exceeds the held-out limit in all ten repetitions</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026waferinspectsr,
+  title={Does Super-Resolution Preserve Defect Evidence? A Low-False-Call Benchmark for Semiconductor Inspection},
+  author={S. Yang and J. Wang},
+  year={2026},
+  eprint={2607.17401},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2607.17401}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-saferestore"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/saferestore_arch.jpg" data-cap="Method: SafeRestore: Detector-Relative Risk Certificates for Selective Industrial Image Restoration" aria-label="Enlarge method figure"><img src="assets/pubs/saferestore_arch.jpg" alt="Method figure from: SafeRestore: Detector-Relative Risk Certificates for Selective Industrial Image Restoration" loading="lazy"></button><figcaption>Method</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/saferestore.jpg" data-cap="Sample: SafeRestore: Detector-Relative Risk Certificates for Selective Industrial Image Restoration" aria-label="Enlarge sample figure"><img src="assets/pubs/saferestore.jpg" alt="Sample figure from: SafeRestore: Detector-Relative Risk Certificates for Selective Industrial Image Restoration" loading="lazy"></button><figcaption>Sample</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">SafeRestore: Detector-Relative Risk Certificates for Selective Industrial Image Restoration</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang</p><p class="pub-venue">arXiv:2609.03475, 2026 <span class="tag">under review</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2609.03475">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/SafeRestore"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Treats image restoration before an inspection detector as a selective decision: return the measured image, one of several restorations, or send it to review. A fixed gate is certified on held-out data with exact binomial bounds on evidence-loss and excess-activation incidents.</p><ul class="hl"><li>Evaluated on 4,591 public Carinthia-S images</li><li>An auditable framework for when a transformed image may be returned automatically, explicitly not a claim that adaptive routing beats simpler policies</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026saferestore,
+  title={SafeRestore: Detector-Relative Risk Certificates for Selective Industrial Image Restoration},
+  author={S. Yang and J. Wang},
+  year={2026},
+  eprint={2609.03475},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2609.03475}
+}</pre></div></div></details></div></div></article>
+<article class="pub has-fig" id="pub-bearingrul"><div class="pub-figs"><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/bearingrul_arch.jpg" data-cap="Architecture: Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift" aria-label="Enlarge architecture figure"><img src="assets/pubs/bearingrul_arch.jpg" alt="Architecture figure from: Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift" loading="lazy"></button><figcaption>Architecture</figcaption></figure><figure class="pub-fig"><button type="button" class="fig-btn" data-full="assets/pubs/bearingrul.jpg" data-cap="Data: Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift" aria-label="Enlarge data figure"><img src="assets/pubs/bearingrul.jpg" alt="Data figure from: Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift" loading="lazy"></button><figcaption>Data</figcaption></figure></div><div class="pub-text"><h4 class="pub-title">Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift</h4><p class="pub-authors"><span class="me">S. Yang</span>, J. Wang, Y. Wang</p><p class="pub-venue">arXiv:2607.08273, 2026 <span class="tag">under review</span></p><div class="pub-links"><a class="pill" href="https://arxiv.org/abs/2607.08273">arXiv</a><a class="pill code" href="https://github.com/nbbllxx0/Empirical-Calibration-and-Conditional-Reliability-Diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a><details class="pub-more"><summary>Details</summary><div class="pub-body"><p>Remaining-useful-life estimates help maintenance decisions only if both accuracy and prediction intervals hold when operating conditions change. On a 10-bearing PHME subset with held-out load–speed regimes, a calibrated model fusing vibration windows, engineered descriptors and operating context is evaluated under strict data separation.</p><ul class="hl"><li>Normalized MAE 0.1477 and empirical 90% coverage 0.900, against 0.1538 and 0.871 for a 400-tree random forest</li><li>Conditional diagnostics expose non-uniform reliability, e.g. 0.666 coverage in a low-load, high-speed cell</li></ul><div class="bib"><div class="bib-head"><span>BibTeX</span><button type="button" class="copy" data-copy>Copy</button></div><pre>@misc{yang2026bearingrul,
+  title={Empirical Calibration and Conditional-Reliability Diagnostics for Bearing RUL Prediction under Operating-Regime Shift},
+  author={S. Yang and J. Wang and Y. Wang},
+  year={2026},
+  eprint={2607.08273},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2607.08273}
+}</pre></div></div></details></div></div></article></div>
+<!-- PUBS:END -->
+</section>
+
+<!-- ============ Teaching ============ -->
+<section id="teaching" class="band">
+  <div class="wrap two-col">
+    <div>
+      <h2>Teaching</h2>
+      <p>
+        A student leaving my course should be able to take an engineering question, choose a computational
+        approach, implement it, and then explain why the answer deserves to be believed. Software will
+        produce a stress contour or an optimized topology; it will not say whether the result is right.
+        So I teach verification as a primary skill: predict before you compute, check against known
+        solutions, and treat disagreement between intuition and simulation as the lesson.
+      </p>
+      <h3 class="small">Experience</h3>
+      <ul class="plain">
+        <li>Grader, MECH&nbsp;45 Applied Programming for Mechanical Engineers (two sections), Santa Clara University, Spring&nbsp;2025</li>
+        <li>Guest lecture, Computational Geometry for CAD/CAM, Santa Clara University</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="small">Courses I am prepared to teach</h3>
+      <ul class="chips">
+        <li>Engineering programming</li><li>Engineering design</li><li>CAD &amp; computational geometry</li>
+        <li>Introductory FEA</li><li>Graduate FEM</li><li>Engineering mathematics</li>
+      </ul>
+      <h3 class="small">Graduate electives I would develop</h3>
+      <ul class="plain">
+        <li>Topology Optimization and Generative Design</li>
+        <li>Scientific Machine Learning for Mechanical Engineering</li>
+        <li>Isogeometric Analysis and Computational Geometry</li>
+      </ul>
+      <h3 class="small">Service</h3>
+      <ul class="plain">
+        <li>Journal reviewer, <em>Structural and Multidisciplinary Optimization</em>, 2026</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ News ============ -->
+<section id="news" class="wrap">
+  <h2>News</h2>
+  <ul class="news">
+    <li><span class="when">Aug 2026</span> <span>Language-model controllers for SIMP topology optimization accepted in <em>Advances in Engineering Software</em>.</span></li>
+    <li><span class="when">Jul 2026</span> <span>Style-IH-GAN accepted in <em>Engineering with Computers</em>, published open access.</span></li>
+    <li><span class="when">May 2026</span> <span>CH-WGAN published online in the <em>Journal of Mechanical Design</em>.</span></li>
+    <li><span class="when">2026</span> <span>NeuralTO-Bench accepted at ASME IDETC/CIE 2026.</span></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Shaoliang Yang · Department of Mechanical Engineering, Santa Clara University · <a href="mailto:syang11@scu.edu">syang11@scu.edu</a></p>
+    <p class="credit">
+      Figures from S. Yang and J. Wang, “Style-IH-GAN,” <em>Engineering with Computers</em> 42:148 (2026),
+      <a href="https://doi.org/10.1007/s00366-026-02393-3">doi:10.1007/s00366-026-02393-3</a>, licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; cropped and resized.
+    </p>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Figure viewer">
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+</dialog>
+
+<script>
+(function () {
+  var lb = document.getElementById('lightbox');
+  var img = lb.querySelector('img'), cap = lb.querySelector('figcaption');
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-full]'); if (!t) return;
+    img.src = t.getAttribute('data-full');
+    img.alt = t.querySelector('img').alt;
+    cap.textContent = t.getAttribute('data-cap');
+    lb.showModal();
+  });
+  lb.addEventListener('click', function (ev) {
+    // Close on the close button or a click on the backdrop (outside the dialog box).
+    var r = lb.getBoundingClientRect();
+    var outside = ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom;
+    if (outside || ev.target.closest('.lb-close')) lb.close();
+  });
+})();
+
+document.addEventListener('click', function (ev) {
+  var b = ev.target.closest('[data-copy]'); if (!b) return;
+  var pre = b.closest('.bib').querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent).then(function () {
+    b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1400);
+  });
+});
+</script>
+</body>
+</html>
